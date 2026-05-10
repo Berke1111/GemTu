@@ -2,13 +2,19 @@
 import { useState } from 'react';
 import SplashScreen from '@/components/SplashScreen';
 import GamePage from '@/components/GamePage';
+import AnimatedBackground from '@/components/AnimatedBackground';
 
 export default function Home() {
   const [showGame, setShowGame] = useState(false);
 
-  if (!showGame) {
-    return <SplashScreen onComplete={() => setShowGame(true)} />;
-  }
-
-  return <GamePage />;
+  return (
+    <>
+      <AnimatedBackground />
+      {!showGame ? (
+        <SplashScreen onComplete={() => setShowGame(true)} />
+      ) : (
+        <GamePage />
+      )}
+    </>
+  );
 }
